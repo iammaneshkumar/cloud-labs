@@ -33,8 +33,27 @@ This lab demonstrates the real meaning of cloud computing: using remote infrastr
 From local ubuntu terminal:
 
 '''bash
-ssh -i mkkey.pem ubuntu@<EC2-Public-Ip>
+ssh -i mkkey.pem ubuntu@EC2-Public-Ip
 
 ## After seuucesful login, terminal shows:
-### ubuntu@<public-ip>: ~$
+### ubuntu@public-ip: ~$
 
+# EC2 Web sever using Nginx
+
+## objective
+Deploy a public web server on AWS EC2 using ubuntu and Nginx.
+
+## Steps Performed
+1. Launched EC2 t2.micro instance
+2. Connected via SSH
+3. Installed Nginx
+4. Opened HTTP (port 80) in security group
+5. Deployed custom HTML pages
+
+## Result
+Successfully accessed web server using public IP.
+
+## Learning 
+- EC2 acts as a virtual computer
+- Security group work as cloud firewalls
+- Ngnix severs HTTP requests
