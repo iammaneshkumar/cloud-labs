@@ -6,7 +6,7 @@ The objective of this document is to understand how AWS networking works at a ba
 ---
 
 ## What is VPC?
-VPC (Virtual private network) is a logically isolated private network created inside AWS.
+VPC (Virtual private cloud) is a logically isolated private network created inside AWS.
 All AWS resources such as EC2 instances are launched inside a VPC.
 
 A VPC allows users to define their own IP address range, subnets, and routing rules.
