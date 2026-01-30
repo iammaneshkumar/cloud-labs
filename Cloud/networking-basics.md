@@ -86,3 +86,64 @@ By default, AWS allows all outbound traffic.
 - Private IP is used for internal communication
 - Security groups are a type of firewall rules for cloud
 - Opening or closing ports directly affects accessibility
+
+# Networking Basics (Practical EC2 Example)
+
+## 1. EC2 Public vs Private Network Access
+
+- My EC2 instance was in a **public subnet**:
+  - It had a public IP (e.g., 13.x.x.x)
+  - I could access it directly via SSH and a web browser
+
+- If the EC2 instance was in a **private subnet**:
+  - Direct SSH or browser access from the internet would fail
+  - Access would require a **NAT Gateway** or **bastion host**
+
+**Learning:** Public subnets allow internet access; private subnets are for internal resources.
+
+---
+
+## 2. Security Groups in Practice
+
+- Security groups act as **firewalls** for EC2 instances
+- For my EC2:
+  - **Port 22 (SSH)**: Allowed my IP for secure login
+  - **Port 80 (HTTP)**: Allowed everyone to access the website
+
+**Important observation:**  
+- Every time my public IP changed, I needed to update the SSH rule
+- This is normal because AWS security groups require **CIDR-based IPs**
+
+---
+
+## 3. Route Tables and Internet Gateway
+
+- My EC2 route table had:
+
+- This allowed traffic from the internet to reach my instance
+- Without this route, even with public IP and security group, SSH or HTTP would fail
+
+---
+
+## 4. Practical Flow of a Web Request
+
+When accessing the website hosted on EC2:
+
+1. Browser sends a request to the EC2 public IP
+2. Internet Gateway allows traffic into the VPC
+3. Route table directs traffic to the public subnet
+4. Security group allows HTTP (port 80)
+5. Nginx on EC2 responds with the webpage
+
+**Learning:** This shows how AWS networking, security groups, and EC2 work together in a real cloud setup.
+
+---
+
+## 5. Key Takeaways from EC2 Networking
+
+- Public IP is essential for internet-accessible EC2
+- Security group rules must match your current IP for SSH
+- Internet Gateway + route table = internet access
+- EC2 instances in public subnets are directly reachable
+- EC2 instances in private subnets require NAT or bastion for external access
+- Understanding these basics helps in deploying websites and applications securely on AWS
