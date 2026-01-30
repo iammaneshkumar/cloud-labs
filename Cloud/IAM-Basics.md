@@ -46,7 +46,7 @@ Example from my lab:
 
 ## IAM Practical Experience
 
-- Created a personal IAM user (`manesh60`) to avoid using root user.
+- Created a personal IAM user (`iammaneshkumar`) to avoid using root user.
 - Learned why root user should be avoided for daily AWS operations.
 - Verified access via AWS CLI using `aws sts get-caller-identity`.
 - Observed how IAM roles provide temporary credentials to EC2 instances.
